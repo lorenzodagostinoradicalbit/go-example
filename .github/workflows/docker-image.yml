@@ -22,4 +22,4 @@ jobs:
     - name: Build the Docker image
       run: |
           docker buildx create --use
-          docker buildx build --push --platform linux/amd64,linux/arm64 -t docker.pkg.github.com/${{ github.repository }}/go-example:${{ github.sha }} .
+          docker buildx build --push --platform linux/amd64 -t docker.pkg.github.com/${{ github.repository }}/go-example:${{ github.sha }} .
