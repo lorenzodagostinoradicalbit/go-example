@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/lorenzodagostinoradicalbit/go-example/config"
 	"github.com/lorenzodagostinoradicalbit/go-example/service/handlers"
@@ -13,6 +14,7 @@ import (
 func InitServer() {
 	app := fiber.New()
 	app.Use(logger.New())
+	app.Use(cors.New())
 
 	app.Get("/version", handlers.Version)
 
