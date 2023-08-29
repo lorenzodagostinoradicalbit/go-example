@@ -19,12 +19,11 @@ jobs:
     - name: 'Login to GitHub Container Registry'
       uses: docker/login-action@v2
       with:
-        registry: ghcr.io
-        username: ${{github.actor}}
-        password: ${{secrets.GITHUB_TOKEN}}
+        username: ${{secrets.DOCKER_REGISTRY_USER}}
+        password: ${{secrets.DOCKER_REGISTRY_TOKEN}}
         logout: false
 
     - name: Build the Docker image
       run: |
           docker buildx create --use
-          docker buildx build --push --platform linux/amd64 -t ghcr.io/${{github.repository_owner}}/go-example:${{ github.sha }} .
+          docker buildx build --push --platform linux/amd64 -t ${{secrets.DOCKER_REGISTRY_USER}}/go-example:${{ github.sha }} .
