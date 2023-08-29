@@ -20,6 +20,7 @@ WORKDIR /app
 
 # Copy the binary from the builder stage
 COPY --from=builder /app/app .
+COPY ./config.json /app/config.json
 
 # Expose the port (if your application listens on a port)
 EXPOSE 8080
